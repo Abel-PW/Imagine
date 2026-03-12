@@ -270,7 +270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 99041473074874656, guid: 5230283b81bf4f246a80caa1799b01ec, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4679748992136669659, guid: 5230283b81bf4f246a80caa1799b01ec, type: 3}
       propertyPath: m_LocalPosition.x
@@ -311,6 +311,10 @@ PrefabInstance:
     - target: {fileID: 4679748992136669659, guid: 5230283b81bf4f246a80caa1799b01ec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8186039679467088890, guid: 5230283b81bf4f246a80caa1799b01ec, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 9219142609942276957, guid: 5230283b81bf4f246a80caa1799b01ec, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -472,7 +476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Echo
   echo: {fileID: 150559351}
-  duration: 3
+  duration: 5
   size: 500
   timer: 0
   timerActive: 0
@@ -493,7 +497,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &564687304
 Transform:
   m_ObjectHideFlags: 0
