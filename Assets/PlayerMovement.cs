@@ -1,9 +1,11 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float xPos, yPos;
+    float xRotation;
+    float yRotation;
 
     private Rigidbody rb;
 
@@ -25,7 +27,17 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSpeed * Time.deltaTime;
+        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * mouseSpeed;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * mouseSpeed;
+
+        yRotation += mouseX;
+        xRotation -= mouseY;
+
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+
+        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+
+
 
         if (Input.GetKey("w")) rb.AddForce(transform.forward * flySpeed);
 
@@ -38,8 +50,6 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey("space")) rb.AddForce(transform.up * flySpeed);
 
         if (Input.GetKey(KeyCode.LeftControl)) rb.AddForce(transform.up * -flySpeed);
-
-        playerTransform.Rotate(Vector3.up * mouseX);
 
     }
 }
