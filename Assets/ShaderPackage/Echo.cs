@@ -7,7 +7,7 @@ public class Echo : MonoBehaviour
 {
     public GameObject echo;
 
-    public float duration = 30;
+    public float duration = 3;
     public float size = 500;
     public float timer;
 
