@@ -17,25 +17,11 @@ public class CycleThrough : MonoBehaviour
 
     private IEnumerator CycleObjects()
     {
-        int index = 0;
-        while (true)
+        for (int i = 0; i < objects.Count; i++)
         {
-            // Deactivate all objects
-            foreach (var obj in objects)
-            {
-                obj.SetActive(false);
-            }
-            // Activate the current object
-            if (objects.Count > 0)
-            {
-                objects[index].SetActive(true);
-            }
-            // Wait for the specified cycle time
+            objects[i].SetActive(true);
             yield return new WaitForSeconds(cycleTime);
-            // Move to the next index
-            index = (index + 1) % objects.Count;
-            if (index > 6)
-                SceneManager.LoadScene("Bat flying");
         }
+        SceneManager.LoadScene("Bat flying");
     }
 }
