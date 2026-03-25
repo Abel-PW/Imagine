@@ -10,10 +10,15 @@ public class CycleThrough : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(CycleObjects());
+        //StartCoroutine(CycleObjects());
+        StartCoroutine(WaitingTime());
     }
 
-
+    private IEnumerator WaitingTime()
+    {
+        yield return new WaitForSeconds(51);
+        SceneManager.LoadScene("Bat flying");
+    }
 
     private IEnumerator CycleObjects()
     {
