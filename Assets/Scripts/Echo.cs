@@ -6,6 +6,7 @@ using UnityEngine;
 public class Echo : MonoBehaviour
 {
     public GameObject echo;
+    [SerializeField] private AudioSource echoSound;
 
     public float duration = 3;
     public float size = 500;
@@ -35,7 +36,14 @@ public class Echo : MonoBehaviour
 
     private void Shriek()
     {
+        PlayEcho();
         echo.SetActive(true);
         timerActive = true;
+    }
+
+    private void PlayEcho()
+    {
+        if (!timerActive)
+            echoSound.Play();
     }
 }
