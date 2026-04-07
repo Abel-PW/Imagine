@@ -15,7 +15,6 @@ public class SpiderMovement : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
 
-        // Set random initial rotation
         heading = Random.Range(0, 360);
         transform.eulerAngles = new Vector3(0, heading, 0);
 
@@ -29,10 +28,6 @@ public class SpiderMovement : MonoBehaviour
         controller.SimpleMove(forward * speed);
     }
 
-    /// <summary>
-    /// Repeatedly calculates a new direction to move towards.
-    /// Use this instead of MonoBehaviour.InvokeRepeating so that the interval can be changed at runtime.
-    /// </summary>
     IEnumerator NewHeading()
     {
         while (true)
@@ -42,9 +37,6 @@ public class SpiderMovement : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Calculates a new direction to move towards.
-    /// </summary>
     void NewHeadingRoutine()
     {
         var floor = Mathf.Clamp(heading - maxHeadingChange, 0, 360);
