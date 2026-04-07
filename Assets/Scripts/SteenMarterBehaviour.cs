@@ -14,12 +14,15 @@ public class SteenmarterBehaviour : MonoBehaviour
 
     public LayerMask whatIsGround, whatIsPlayer;
 
+    public float jumpHeight;
+    private Vector3 jump;
+
     public float walkPointRange;
-    public Vector3 walkPoint;
+    private Vector3 walkPoint;
     bool walkPointSet;
 
-    public float sightRange;
-    public bool playerInSightRange;
+    public float sightRange, attackRange;
+    public bool playerInSightRange, playerInAttackRange;
 
     private void Awake()
     {
@@ -30,17 +33,23 @@ public class SteenmarterBehaviour : MonoBehaviour
     private void Update()
     {
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
         if (playerInSightRange && timerActive)
         {
             Chase();
+        }
+        
+        if (playerInAttackRange && timerActive)
+        {
+            Attack();
         }
         else
         {
             Patroling();
         }
 
-        if ( Input.GetKey( KeyCode.E))
+        if ( Input.GetKey( KeyCode.E ) )
         {
             timerActive = true;
         }
@@ -57,8 +66,10 @@ public class SteenmarterBehaviour : MonoBehaviour
         chaseTimer += Time.deltaTime;
         if (chaseTimer >= chaseTime)
         {
+            chaseTimer = 0;
             timerActive = false;
         }
+     
     }
     private void Patroling()
     {
@@ -86,7 +97,6 @@ public class SteenmarterBehaviour : MonoBehaviour
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        Debug.DrawRay(transform.position, -transform.up, Color.green);
         if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
         {
             walkPointSet = true;
@@ -95,5 +105,10 @@ public class SteenmarterBehaviour : MonoBehaviour
     private void Chase()
     {
         steenmarter.SetDestination(player.position);
+    }
+
+    private void Attack()
+    {
+     jump = new Vector3(transform.position.x, transform.position.y + jumpHeight, transform.position.z);  
     }
 }
