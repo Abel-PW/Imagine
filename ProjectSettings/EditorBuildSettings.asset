@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Intro.unity
+    path: Assets/Assets/Intro.unity
     guid: c0b311fdd76581549bfa62336d351074
   - enabled: 1
     path: Assets/Scenes/Bat flying.unity
