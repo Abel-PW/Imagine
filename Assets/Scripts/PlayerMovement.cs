@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * mouseSpeed;
         float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * mouseSpeed;
