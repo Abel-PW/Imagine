@@ -25,8 +25,7 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void Update()
     {
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * mouseSpeed;
         float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * mouseSpeed;
@@ -37,9 +36,13 @@ public class PlayerMovement : MonoBehaviour
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+    }
 
 
 
+    // Update is called once per frame
+    void FixedUpdate()
+    {
         if (Input.GetKey("w")) rb.AddForce(transform.forward * flySpeed);
 
         if (Input.GetKey("s")) rb.AddForce(transform.forward * -flySpeed);
