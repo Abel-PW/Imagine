@@ -7,6 +7,8 @@ public class Echo : MonoBehaviour
 {
     public GameObject echo;
     [SerializeField] private AudioSource echoSound;
+    [SerializeField] private float pitchMax, pitchMin;
+    [SerializeField] private bool randomizePitch;
 
     public float duration = 3;
     public float size = 500;
@@ -43,6 +45,10 @@ public class Echo : MonoBehaviour
 
     private void PlayEcho()
     {
+        if (randomizePitch)
+        {
+            echoSound.pitch = Random.Range(pitchMin, pitchMax);
+        }
         if (!timerActive)
             echoSound.Play();
     }
