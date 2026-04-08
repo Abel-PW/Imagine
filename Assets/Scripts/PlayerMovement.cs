@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -50,6 +51,8 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey("space")) rb.AddForce(transform.up * flySpeed);
 
         if (Input.GetKey(KeyCode.LeftControl)) rb.AddForce(transform.up * -flySpeed);
+
+        if (Input.GetKey("p")) SceneManager.LoadScene("Intro");
 
     }
 }

@@ -17,7 +17,7 @@ public class CycleThrough : MonoBehaviour
     private IEnumerator WaitingTime()
     {
         yield return new WaitForSeconds(51);
-        SceneManager.LoadScene("Bat flying");
+        SceneManager.LoadScene("Game");
     }
 
     private IEnumerator CycleObjects()
@@ -27,6 +27,6 @@ public class CycleThrough : MonoBehaviour
             objects[i].SetActive(true);
             yield return new WaitForSeconds(cycleTime);
         }
-        SceneManager.LoadScene("Bat flying");
+        SceneManager.LoadScene("Game");
     }
 }
