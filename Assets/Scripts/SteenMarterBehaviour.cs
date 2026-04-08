@@ -5,8 +5,9 @@ using UnityEngine.AI;
 public class SteenmarterBehaviour : MonoBehaviour
 {
     public float chaseTime;
-    float chaseTimer;
-    bool timerActive;
+
+    private float chaseTimer;
+    private bool timerActive;
 
     public NavMeshAgent steenmarter;
 
@@ -19,10 +20,10 @@ public class SteenmarterBehaviour : MonoBehaviour
 
     public float walkPointRange;
     private Vector3 walkPoint;
-    bool walkPointSet;
+    private bool walkPointSet;
 
     public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
+    private bool playerInSightRange, playerInAttackRange;
 
     private void Awake()
     {
@@ -97,7 +98,7 @@ public class SteenmarterBehaviour : MonoBehaviour
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+        if (Physics.Raycast(walkPoint, -transform.up, 6, whatIsGround))
         {
             walkPointSet = true;
         }
